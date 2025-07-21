@@ -1,37 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark modern theme with cool colors */
-  --background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-  --background-solid: #0f0f23;
+  --background: #0f0f23;
   --foreground: #e2e8f0;
-  --card: rgba(30, 41, 59, 0.8);
-  --card-hover: rgba(51, 65, 85, 0.9);
-  --card-foreground: #f8fafc;
-  --primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-  --primary-solid: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: rgba(30, 41, 59, 0.6);
-  --secondary-foreground: #cbd5e1;
-  --muted: rgba(15, 23, 42, 0.8);
-  --muted-foreground: #64748b;
-  --accent: rgba(59, 130, 246, 0.1);
-  --accent-foreground: #e2e8f0;
-  --border: rgba(59, 130, 246, 0.2);
-  --border-hover: rgba(59, 130, 246, 0.4);
-  --input: rgba(30, 41, 59, 0.9);
-  --ring: #3b82f6;
-  --radius: 0.75rem;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.4);
-  --glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
-}
-
-* {
-  border-color: var(--border);
 }
 
 body {
