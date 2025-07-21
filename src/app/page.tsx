@@ -69,16 +69,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#181830] to-[#232347] flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 via-orange-400 to-pink-500 flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 shadow-md bg-opacity-80 bg-[#181830]">
+      <header className="flex items-center justify-between px-6 py-4 shadow-md bg-black/20 backdrop-blur-sm">
         <div className="flex items-center gap-2">
           <Image src="/globe.svg" alt="شعار" width={32} height={32} />
-          <span className="text-2xl font-bold gradient-text arabic-text">
+          <span className="text-2xl font-bold text-white arabic-text">
             روزيت
           </span>
         </div>
-        <button className="btn-primary px-5 py-2 rounded-lg font-bold arabic-text text-base">
+        <button className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-lg font-bold arabic-text text-base hover:bg-white/30 transition-all">
           تسجيل الدخول
         </button>
       </header>
@@ -86,10 +86,10 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex-1 flex flex-col items-center justify-center gap-10 p-4">
         <section className="flex flex-col items-center gap-4 mt-8">
-          <h1 className="gradient-text text-5xl font-extrabold arabic-text text-center">
+          <h1 className="text-white text-5xl font-extrabold arabic-text text-center drop-shadow-lg">
             حوّل فكرتك إلى تطبيق في دقائق
           </h1>
-          <p className="text-xl text-gray-300 arabic-text max-w-2xl text-center">
+          <p className="text-xl text-white/90 arabic-text max-w-2xl text-center drop-shadow">
             اكتب وصفاً لما تريد بناءه، ودع الذكاء الاصطناعي ينشئ لك تطبيقاً
             كاملاً يمكنك تعديله أو نشره مباشرة.
           </p>
@@ -98,17 +98,17 @@ export default function Home() {
         {/* App Generator Form */}
         <form
           onSubmit={handleSubmit}
-          className="glass p-8 rounded-2xl flex flex-col gap-5 w-full max-w-xl shadow-2xl mt-4"
+          className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl flex flex-col gap-5 w-full max-w-xl shadow-2xl mt-4"
         >
           <label
             htmlFor="description"
-            className="arabic-text font-semibold text-lg"
+            className="arabic-text font-semibold text-lg text-white"
           >
             وصف التطبيق المطلوب
           </label>
           <textarea
             id="description"
-            className="p-4 rounded-xl border border-gray-700 bg-[#181830] text-white focus:outline-none focus:ring-2 focus:ring-blue-500 arabic-text min-h-[80px] resize-none"
+            className="p-4 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 arabic-text min-h-[80px] resize-none placeholder-white/70"
             placeholder="مثال: أريد تطبيق لإدارة المهام مع إمكانية إضافة مهام وتصنيفها حسب الأولوية..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
