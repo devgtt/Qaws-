@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function PreviewPage() {
@@ -47,6 +48,13 @@ export default function PreviewPage() {
         sandbox="allow-scripts allow-forms allow-modals allow-popups allow-same-origin"
         title="Generated App"
       />
+      {/* back button */}
+      <Link
+        href={"/"}
+        className="bg-white/40 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-lg font-bold arabic-text text-base hover:bg-white/30 transition-all fixed bottom-10 right-10"
+      >
+        الرجوع
+      </Link>
     </div>
   );
 }
