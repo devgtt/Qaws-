@@ -75,7 +75,7 @@ export default function Home() {
         <div className="flex items-center gap-2">
           <Image src="/globe.svg" alt="شعار" width={32} height={32} />
           <span className="text-2xl font-bold gradient-text arabic-text">
-            مولد التطبيقات
+            روزيت
           </span>
         </div>
         <button className="btn-primary px-5 py-2 rounded-lg font-bold arabic-text text-base">
@@ -116,7 +116,7 @@ export default function Home() {
           />
           <button
             type="submit"
-            className="btn-primary text-center py-3 rounded-xl text-lg font-bold arabic-text mt-2 disabled:opacity-60"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-center py-4 px-8 rounded-xl text-2xl font-bold arabic-text mt-4 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:shadow-2xl shadow-lg w-full flex justify-center"
             disabled={loading || !description.trim()}
           >
             {loading ? (
@@ -126,7 +126,7 @@ export default function Home() {
                 <span className="loading-dot"></span>
               </span>
             ) : (
-              "أنشئ تطبيقي الآن"
+              "توليد"
             )}
           </button>
         </form>
@@ -146,7 +146,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="text-center text-gray-500 py-4 arabic-text text-sm mt-auto">
-        © {new Date().getFullYear()} مولد التطبيقات الذكي. جميع الحقوق محفوظة.
+        © {new Date().getFullYear()} روزيت. جميع الحقوق محفوظة.
       </footer>
     </div>
   );
