@@ -4,7 +4,7 @@ import React from "react";
 import NavbarLinks from "./NavbarLinks";
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between px-6 py-4 shadow-md bg-black/50 backdrop-blur-sm">
+    <header className="flex items-center justify-between px-6 py-4 shadow-md bg-black/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/globe.svg" alt="شعار" width={32} height={32} />
