@@ -92,7 +92,7 @@ const GenerateCodeForm = () => {
           minLength={minLength}
         />
         <p
-          className={`text-sm arabic-text text-right ${
+          className={`text-sm arabic-text text-right  ${
             description && description.length >= 10
               ? "text-green-500"
               : description.length === 0
@@ -101,7 +101,13 @@ const GenerateCodeForm = () => {
           }`}
         >
           {description.length}/{maxLength}
+          {description && description.length < 10 && (
+            <span className="text-yellow-300 block">
+              يجب أن يكون الوصف أطول من 10 أحرف وان لا يتعدى 500 حرف
+            </span>
+          )}
         </p>
+
         <button
           type="submit"
           className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-center py-4 px-8 rounded-xl text-2xl font-bold arabic-text mt-4 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:shadow-2xl shadow-lg w-full flex justify-center"
