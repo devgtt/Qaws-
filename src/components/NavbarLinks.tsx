@@ -1,13 +1,19 @@
 "use client";
 
 import { NavigatationLinks } from "@/utils/constants/NavbarLinks";
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NavbarLinks = () => {
+interface NavbarLinksProps {
+  user: User | null;
+}
+
+const NavbarLinks = ({ user }: NavbarLinksProps) => {
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [currentUser, setCurrentUser] = useState<User | null>(user);
+  console.log("From NavbarLinks", user);
   useEffect(() => {
     if (localStorage.getItem("generatedCode")) {
       setIsCodeGenerated(true);
@@ -21,12 +27,17 @@ const NavbarLinks = () => {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-
+  const filteredLinks = NavigatationLinks.filter((link) => {
+    if (link.showWhen === "always") return true;
+    if (link.showWhen === "authenticated") return !!currentUser;
+    if (link.showWhen === "unauthenticated") return !currentUser;
+    return true;
+  });
   return (
     <>
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-3 lg:gap-4">
-        {NavigatationLinks.map((link) => (
+        {filteredLinks.map((link) => (
           <Link
             href={link.href}
             key={link.label}
@@ -138,7 +149,7 @@ const NavbarLinks = () => {
                 التنقل الرئيسي
               </div>
 
-              {NavigatationLinks.map((link) => (
+              {filteredLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}

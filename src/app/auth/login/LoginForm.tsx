@@ -1,22 +1,53 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/supabase-browser";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // useEffect(() => {
+  //   supabase.auth.getUser().then(({ data }) => {
+  //     if (data.user) {
+  //       console.log("user", data.user);
+  //       router.replace("/");
+  //     }
+  //   });
+  // }, [router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
+    try {
+      const supabase = createClient();
+      const { error, data } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        return toast.error(error.message);
+      }
+      toast.success(
+        `تم تسجيل الدخول بنجاح`
+        // store in cookies
+      );
+      const token = data.session?.access_token;
+      if (!token) {
+        return toast.error("حدث خطأ أثناء تسجيل الدخول");
+      }
+    } catch (error) {
+      toast.error(`حدث خطأ أثناء تسجيل الدخول , ${error}`);
+    } finally {
       setIsLoading(false);
-      // Handle login logic here
-    }, 2000);
+      router.refresh();
+    }
   };
   return (
     <section>

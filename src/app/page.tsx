@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 relative z-1 via-purple-500 via-orange-400 to-pink-500 flex flex-col">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 via-orange-400 to-pink-500 flex flex-col">
         {/* Hero Section */}
         <main className="flex-1 flex flex-col items-center justify-center gap-10 p-4">
           <section className="flex flex-col items-center gap-4 mt-8">

@@ -533,13 +533,6 @@ select:focus {
   }
 }
 
-/* Dark mode system preference support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Already dark theme, no changes needed */
-  }
-}
-
 /* Print styles */
 @media print {
   .sidebar,

@@ -1,7 +1,9 @@
 "use client";
+import { createClient } from "@/utils/supabase/supabase-browser";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,27 +25,27 @@ const RegisterForm = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!acceptTerms) {
-      alert("يجب الموافقة على شروط الخدمة للمتابعة");
-      return;
-    }
-
-    if (formData.email !== formData.confirmEmail) {
-      alert("البريد الإلكتروني غير متطابق");
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("كلمة المرور غير متطابقة");
-      return;
-    }
-
     setIsLoading(true);
-    // Simulate registration process
-    setTimeout(() => {
+    try {
+      const supabase = createClient();
+      const { error, data } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+          },
+        },
+      });
+      if (error) {
+        return toast.error(error.message);
+      }
+      toast.success("تم إنشاء الحساب بنجاح يرجى التحقق من البريد الإلكتروني");
+    } catch (error) {
+      toast.error("حدث خطا ما يرجى المحاولة مجددا");
+    } finally {
       setIsLoading(false);
-      // Handle registration logic here
-    }, 2000);
+    }
   };
 
   return (

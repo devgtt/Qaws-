@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const GenerateCodeForm = () => {
   const [description, setDescription] = useState("");
@@ -15,6 +15,7 @@ const GenerateCodeForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    toast.info("جاري توليد التطبيق...");
 
     try {
       const enhancedPrompt = `Create a complete HTML web application based on this description: "${description}". 
@@ -35,12 +36,10 @@ const GenerateCodeForm = () => {
           },
         }
       );
-      // استخراج الرد من API
 
       const aiText = response.data.candidates[0].content.parts[0].text;
       setResponseText(aiText);
 
-      // استخراج الكود HTML من الرد
       const codeMatch =
         aiText.match(/```html\n([\s\S]*?)\n```/) ||
         aiText.match(/<!DOCTYPE html>[\s\S]*?<\/html>/);
@@ -48,21 +47,19 @@ const GenerateCodeForm = () => {
       if (codeMatch) {
         generatedCode = codeMatch[1] || codeMatch[0];
       } else {
-        // إذا لم يكن هناك تنسيق markdown، استخدم الرد كاملاً كما هو
         generatedCode = aiText;
       }
 
-      // حفظ الكود في localStorage والانتقال لصفحة المعاينة
       localStorage.setItem("generatedCode", generatedCode);
       localStorage.setItem("appDescription", description);
       localStorage.setItem("aiResponse", aiText);
+
+      // Show success toast when generation actually succeeds
+      toast.success("تم توليد التطبيق بنجاح! سيتم توجيهك إلى صفحة المعاينة");
+
       router.push("/preview");
     } catch (error) {
-      Swal.fire({
-        title: "حدث خطأ",
-        text: `حدث خطأ أثناء إنشاء التطبيق , ${error}`,
-        icon: "error",
-      });
+      toast.error(`حدث خطأ أثناء إنشاء التطبيق: ${error}`);
     } finally {
       setLoading(false);
     }
