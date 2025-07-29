@@ -41,6 +41,12 @@ const RegisterForm = () => {
         return toast.error(error.message);
       }
       toast.success("تم إنشاء الحساب بنجاح يرجى التحقق من البريد الإلكتروني");
+      // return modal to check email
+      return (
+        <div className="flex justify-center items-center">
+          <h1>تم إنشاء الحساب بنجاح يرجى التحقق من البريد الإلكتروني</h1>
+        </div>
+      );
     } catch (error) {
       toast.error("حدث خطا ما يرجى المحاولة مجددا");
     } finally {

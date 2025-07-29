@@ -13,7 +13,7 @@ const NavbarLinks = ({ user }: NavbarLinksProps) => {
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(user);
-  console.log("From NavbarLinks", user);
+
   useEffect(() => {
     if (localStorage.getItem("generatedCode")) {
       setIsCodeGenerated(true);

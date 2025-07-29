@@ -10,6 +10,7 @@ import {
   Trash2,
   Save,
 } from "lucide-react";
+import Logout from "./Logout";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -162,11 +163,7 @@ export default async function ProfilePage() {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center items-center mt-5">
-                  <button className="bg-gradient-to-r bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                    تسجيل الخروج
-                  </button>
-                </div>
+                <Logout />
               </div>
             </div>
 
