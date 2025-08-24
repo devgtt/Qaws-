@@ -1,14 +1,13 @@
-"use client";
-import ConfirmModal from "@/components/modals/ConfirmModal";
-import { createClient } from "@/utils/supabase/supabase-browser";
-import { redirect } from "next/navigation";
-import React from "react";
+'use client';
+import { createClient } from '@/utils/supabase/supabase-browser';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
 const Logout = () => {
   const handleLogout = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
-    redirect("/");
+    redirect('/');
   };
 
   return (
