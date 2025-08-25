@@ -12,9 +12,7 @@ export default function Home() {
             <h1 className="text-white text-5xl font-extrabold arabic-text text-center drop-shadow-lg">
               حوّل فكرتك إلى تطبيق في دقائق
             </h1>
-            <p className="text-xl text-white/90 arabic-text max-w-2xl text-center drop-shadow">
-              اكتب وصفاً لما تريد بناءه، ودع الذكاء الاصطناعي ينشئ لك تطبيقاً
-              كاملاً يمكنك تعديله أو نشره مباشرة.
+            <p className="text-xl text-white/90 arabic-text max-w-2xl text-center drop-shadow">الانشاء يستغرق ٣ دقائق واكثر
             </p>
           </section>
           <GenerateCodeForm />
